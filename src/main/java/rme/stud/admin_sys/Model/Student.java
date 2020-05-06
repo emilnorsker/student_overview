@@ -31,7 +31,6 @@ public class Student {
         this.efternavn = efternavn;
         this.dato = dato;
         this.cpr = cpr;
-
     }
 
     public int getId() {
