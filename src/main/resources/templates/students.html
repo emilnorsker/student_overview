@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../main.css">
+
+    <title>Item Database</title>
+</head>
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/Menu">
+
+    </div>
+
+
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome To The Student Database!</h1>
+        <p class="lead">This Database is directly Connected to GearHost</p>
+        <hr class="my-4">
+        <p>By being directly connected to GearHost, it will update the database straight away!</p>
+
+    <h2>Avaliable Items: </h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm p-3 mb-2 bg-light text-black">
+                   <h7>Fornavn</h7>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
+                   <h7>Efternavn</h7>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
+                    <h7>Update</h7>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
+                   <h7>Delete</h7>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
+                    <span style="color: black" th:text="${student.fornavn}"/>
+                    </p>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
+                    <span style="color: black" th:text="${student.efternavn}"/>
+                    </p>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
+                    <a style="color: lightcoral;" th:href="@{'/delete/' + ${student.id}}">Delete</a>
+                    </p>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
+                    <a style="color: black;" th:href="@{'/update/' + ${student.id}}">Update</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div th:replace="fragments/top_menu">
+
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
