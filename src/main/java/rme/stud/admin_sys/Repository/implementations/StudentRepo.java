@@ -14,12 +14,10 @@ import java.util.List;
 public class StudentRepo implements ExRepo {
     private Connection conn;
 
-    public StudentRepo()  {
+    public StudentRepo() throws ClassNotFoundException {
         try {
             this.conn = DatabaseConnectionManager.getDatabaseConnection();
-        }
-        catch (ClassNotFoundException e)
-        {}
+        }catch(ClassNotFoundException | SQLException e){System.out.println(e);}
     }
 
     @Override
@@ -38,8 +36,8 @@ public class StudentRepo implements ExRepo {
                 studentToReturn.setId(rs.getInt(1));
                 studentToReturn.setFornavn(rs.getString(2));
                 studentToReturn.setEfternavn(rs.getString(3));
-                studentToReturn.setDate(rs.getDate(4));
-                studentToReturn.setCpr(rs.getInt(5));
+           //     studentToReturn.setDate(rs.getDate(4));
+           //     studentToReturn.setCpr(rs.getInt(5));
             }
         }
         catch(SQLException s){
@@ -59,8 +57,8 @@ public class StudentRepo implements ExRepo {
                 tempStudent.setId(rs.getInt(1));
                 tempStudent.setFornavn(rs.getString(2));
                 tempStudent.setEfternavn(rs.getString(3));
-                tempStudent.setDate(rs.getDate(4));
-                tempStudent.setCpr(rs.getInt(5));
+           //     tempStudent.setDate(rs.getDate(4));
+            //    tempStudent.setCpr(rs.getInt(5));
                 allStudents.add(tempStudent);
             }
         } catch (SQLException e) {

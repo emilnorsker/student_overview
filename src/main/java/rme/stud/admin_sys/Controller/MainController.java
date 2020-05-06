@@ -1,18 +1,10 @@
 package rme.stud.admin_sys.Controller;
 
-//import com.example.demo.Model.Item;
+import rme.stud.admin_sys.Repository.implementations.StudentRepo;
 import rme.stud.admin_sys.Model.Student;
-import rme.stud.admin_sys.Repository.InMemoryStudentRepositoryImpl;
-import rme.stud.admin_sys.Repository.interfaces.ExRepo;
-//import com.example.demo.Repository.implementations.StudentRepo;
-//import com.example.demo.Service.StudentService;
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
@@ -21,33 +13,39 @@ public class MainController {
     StudentService studentService;
 
      */
+    private StudentRepo studentRepo;
 
-    private ExRepo studentRepo = new InMemoryStudentRepositoryImpl();
+    public MainController() throws ClassNotFoundException {
+        try {
+            studentRepo = new StudentRepo();
+        }catch(ClassNotFoundException e){System.out.println(e);}
 
-    @GetMapping("/students")
-    public String shop(Model model){
-        model.addAttribute("students", studentRepo.readAll());
-        return "students";
     }
 
-    @Deprecated
+
+    @GetMapping("/shop")
+    public String shop(Model model){
+        model.addAttribute("students", studentRepo.readAll());
+        return "shop";
+    }
+
     @GetMapping("/create")
     public String showCreatePage(){
 
-        return "students";
+        return "create";
     }
 
     @PostMapping("/create")
     public String create(@ModelAttribute Student student){
         studentRepo.create(student);
-        return "redirect:/students";
+        return "redirect:/shop";
 
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id){
         studentRepo.delete(id);
-        return "redirect:/students";
+        return "redirect:/shop";
     }
     /*
     @GetMapping("/update/{id}")
@@ -88,4 +86,16 @@ public class MainController {
         return "blog";
     }
 
+    @GetMapping("/students")
+    public String students(Model model){
+        model.addAttribute("students", studentRepo.readAll());
+
+        return "students";
+    }
+    @GetMapping("/student")
+    @ResponseBody
+    public String getStudentByParameter(@RequestParam int id) {
+        Student stu = studentRepo.read(id);
+        return "The name is: " + stu.getFornavn() + " and the cpr is " + stu.getCpr();
+    }
 }
