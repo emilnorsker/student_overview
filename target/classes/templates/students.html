@@ -36,6 +36,12 @@
                    <h7>Efternavn</h7>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
+                    <h7>Date</h7>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
+                    <h7>CPR</h7>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
                     <h7>Update</h7>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
@@ -59,9 +65,20 @@
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
+                        <span style="color: black" th:text="${student.dato}"/>
+                    </p>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
+                        <span id = "CPR" style="color: black" th:text="${student.cpr}"/>
+                    </p>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
                     <a style="color: lightcoral;" th:href="@{'/delete/' + ${student.id}}">Delete</a>
                     </p>
                 </div>
+
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
                     <a style="color: black;" th:href="@{'/update/' + ${student.id}}">Update</a>

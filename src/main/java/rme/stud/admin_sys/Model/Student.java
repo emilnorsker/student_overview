@@ -16,8 +16,7 @@ public class Student {
     private int id;
     private String fornavn;
     private String efternavn;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dato;
+    private String dato;
     private int cpr;
 
 
@@ -25,7 +24,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String fornavn, String efternavn, Date dato, int cpr){
+    public Student(int id, String fornavn, String efternavn, String dato, int cpr){
         this.id = id;
         this.fornavn = fornavn;
         this.efternavn = efternavn;
@@ -57,11 +56,11 @@ public class Student {
         this.efternavn = efternavn;
     }
 
-    public Date getDate() {
+    public String getDato() {
         return dato;
     }
 
-    public void setDate(Date dato) {
+    public void setDato(String dato) {
         this.dato = dato;
     }
 

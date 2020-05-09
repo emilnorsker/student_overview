@@ -2,7 +2,7 @@
     Add Student
 </button>
 
-
+<a class="btn btn-primary btn-lg" href="/create" role="button">Create new Item</a>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,20 +15,35 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="add-form" action="/create" method="post">
-                    <div class="form-group">
-                        <input type="text" name="fornavn" class="form-control" placeholder="Enter a First Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="efternavn" class="form-control" placeholder="Enter a Last Name">
-                    </div>
+                <div class="container">
 
-                </form>
+                    <h1>Create new item</h1>
+
+                    <form action="/create" method="post">
+                        <div class="form-group">
+                            <input type="text" name="id" class="form-control" placeholder="Enter a new ID">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fornavn" class="form-control" placeholder="Please enter a First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="efternavn" class="form-control" placeholder="Please enter a Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="dato" class="form-control" placeholder="Please enter a Date">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="cpr" class="form-control" placeholder="Please enter a CPR">
+                        </div>
+
+
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="add-form">Save changes</button>
+                <button type="submit" class="btn btn-primary">Create Item</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

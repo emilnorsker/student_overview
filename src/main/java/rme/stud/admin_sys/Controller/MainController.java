@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @Controller
 public class MainController {
     /*
@@ -22,13 +25,28 @@ public class MainController {
 
     }
 
-
+/*
     @GetMapping("/shop")
     public String shop(Model model){
         model.addAttribute("students", studentRepo.readAll());
         return "shop";
     }
+*/
 
+    @GetMapping("/students")
+    public String students(Model model){
+        model.addAttribute("students", studentRepo.readAll());
+
+        return "students";
+    }
+    /*
+    @GetMapping("/student")
+    @ResponseBody
+    public String getStudentByParameter(@RequestParam int id) {
+        Student stu = studentRepo.read(id);
+        return "The name is: " + stu.getFornavn() + " and the cpr is " + stu.getCpr();
+    }
+*/
     @GetMapping("/create")
     public String showCreatePage(){
 
@@ -36,16 +54,16 @@ public class MainController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Student student){
+    public String create(@ModelAttribute Student student) throws SQLException {
         studentRepo.create(student);
-        return "redirect:/shop";
+        return "redirect:/students";
 
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id){
         studentRepo.delete(id);
-        return "redirect:/shop";
+        return "redirect:/students";
     }
     /*
     @GetMapping("/update/{id}")
@@ -86,16 +104,5 @@ public class MainController {
         return "blog";
     }
 
-    @GetMapping("/students")
-    public String students(Model model){
-        model.addAttribute("students", studentRepo.readAll());
 
-        return "students";
-    }
-    @GetMapping("/student")
-    @ResponseBody
-    public String getStudentByParameter(@RequestParam int id) {
-        Student stu = studentRepo.read(id);
-        return "The name is: " + stu.getFornavn() + " and the cpr is " + stu.getCpr();
-    }
 }

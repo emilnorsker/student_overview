@@ -20,10 +20,41 @@ public class StudentRepo implements ExRepo {
         }catch(ClassNotFoundException | SQLException e){System.out.println(e);}
     }
 
+
+
+
+
+
     @Override
-    public boolean create(Student student) {
-        return false;
+    public Student create(Student student) {
+        Student studentToCreate = new Student();
+        try {
+            PreparedStatement createStudent = conn.prepareStatement("INSERT INTO student (id,fornavn,efternavn,dato,cpr) VALUES (?,?,?,?,?)");
+
+
+            createStudent.setInt(1, student.getId());
+            createStudent.setString(2, student.getFornavn());
+            createStudent.setString(3, student.getEfternavn());
+            createStudent.setString(4, student.getDato());
+            createStudent.setInt(5, student.getCpr());
+
+            createStudent.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return studentToCreate;
     }
+
+
+
+
+
+
+
+
 
     @Override
     public Student read(int id) {
@@ -36,9 +67,10 @@ public class StudentRepo implements ExRepo {
                 studentToReturn.setId(rs.getInt(1));
                 studentToReturn.setFornavn(rs.getString(2));
                 studentToReturn.setEfternavn(rs.getString(3));
-           //     studentToReturn.setDate(rs.getDate(4));
-           //     studentToReturn.setCpr(rs.getInt(5));
+                studentToReturn.setDato(rs.getString(4));
+                studentToReturn.setCpr(rs.getInt(5));
             }
+            conn.close();
         }
         catch(SQLException s){
             s.printStackTrace();
@@ -57,8 +89,8 @@ public class StudentRepo implements ExRepo {
                 tempStudent.setId(rs.getInt(1));
                 tempStudent.setFornavn(rs.getString(2));
                 tempStudent.setEfternavn(rs.getString(3));
-           //     tempStudent.setDate(rs.getDate(4));
-            //    tempStudent.setCpr(rs.getInt(5));
+                tempStudent.setDato(rs.getString(4));
+                tempStudent.setCpr(rs.getInt(5));
                 allStudents.add(tempStudent);
             }
         } catch (SQLException e) {
@@ -75,7 +107,9 @@ public class StudentRepo implements ExRepo {
     }
 
     @Override
-    public boolean delete(int id) {
-        return false;
+    public Student delete(int id) {
+        Student studentToDelete = new Student();
+        studentToDelete.getId();
+        return studentToDelete;
     }
 }

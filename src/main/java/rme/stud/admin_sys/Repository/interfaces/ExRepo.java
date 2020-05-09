@@ -2,11 +2,13 @@ package rme.stud.admin_sys.Repository.interfaces;
 
 import rme.stud.admin_sys.Model.Student;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ExRepo {
     // CRUD operations
-    boolean create(Student student);
+    Student create(Student student) throws SQLException;
 
     Student read(int id);
 
@@ -14,5 +16,5 @@ public interface ExRepo {
 
     boolean update(Student student);
 
-    boolean delete(int id);
+    Student delete(int id);
 }
