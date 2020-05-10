@@ -21,7 +21,7 @@
 
                         <h1 >Create new item</h1>
 
-                        <form action="/create" method="post">
+                        <form id="update" action="/update" method="post">
                             <div class="form-group">
                                 <input type="text" name="fornavn" class="form-control" th:placeholder="${name1}" >
                             </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create Item</button>
+                    <button type="submit" class="btn btn-primary" form="update">Create Item</button>
                 </div>
             </div>
         </div>
