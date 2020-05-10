@@ -1,13 +1,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<div th:fragment="updateModal(name1, name2, cpr)">
-    <button type="button" data-toggle="modal" data-target="#UpdateModal">
+<div th:fragment="updateModal(id,name1, name2, cpr)">
+    <button type="button" data-toggle="modal" th:attr="data-target='#update' + ${id}">
         Update
     </button>
 
 
 
-    <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" th:id="update+${id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
