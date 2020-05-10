@@ -55,22 +55,22 @@
             <div class="row">
                 <div class="col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
-                    <span style="color: black" th:text="${student.fornavn}"/>
+                    <span style="color: black" th:placeholder="${student.fornavn}"/>
                     </p>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
-                    <span style="color: black" th:text="${student.efternavn}"/>
+                    <span style="color: black" th:placeholder="${student.efternavn}"/>
                     </p>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
-                        <span style="color: black" th:text="${student.dato}"/>
+                        <span style="color: black" th:placeholder="${student.dato}"/>
                     </p>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
-                        <span id = "CPR" style="color: black" th:text="${student.cpr}"/>
+                        <span id = "CPR" style="color: black" th:placeholder="${student.cpr}"/>
                     </p>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
