@@ -69,11 +69,6 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/blog")
-    public String blog(){
-
-        return "blog";
-    }
 
 
 }
