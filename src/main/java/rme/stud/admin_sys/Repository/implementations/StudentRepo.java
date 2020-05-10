@@ -34,8 +34,6 @@ public class StudentRepo implements ExRepo {
 
             createStudent.executeUpdate();
 
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,10 +84,10 @@ public class StudentRepo implements ExRepo {
     }
 
     @Override
-    public boolean update(Student student) {
-
+    public Student update(Student student) {
+        Student studentToUpdate = new Student();
         try {
-            PreparedStatement statement = conn.prepareStatement("UPDATE students SET fornavn = ?, efternvn = ?,dato =?, cpr =? WHERE student_id =?");
+            PreparedStatement statement = conn.prepareStatement("UPDATE student SET fornavn = ?, efternavn = ?,dato =?, cpr =? WHERE id =?");
 
             statement.setString(1, student.getFornavn());
             statement.setString(2, student.getEfternavn());
@@ -97,12 +95,13 @@ public class StudentRepo implements ExRepo {
             statement.setInt(4, student.getCpr());
             statement.setInt(5, student.getId());
 
+
             statement.executeUpdate();
         }
         catch (Exception e){
             System.out.println(e);
         }
-        return false;
+        return studentToUpdate;
     }
 
     @Override

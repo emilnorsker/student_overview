@@ -47,12 +47,12 @@ public class MainController {
     @GetMapping("/update")
     public String showUpdatePage(){
 
-        return "students";
+        return "update";
     }
 
     @PostMapping("/update")
     public String Update(@ModelAttribute Student student) throws SQLException {
-        studentRepo.create(student);
+        studentRepo.update(student);
         return "redirect:/students";
     }
 

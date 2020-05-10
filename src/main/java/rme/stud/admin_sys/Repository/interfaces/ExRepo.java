@@ -14,7 +14,7 @@ public interface ExRepo {
 
     List<Student> readAll();
 
-    boolean update(Student student);
+    Student update(Student student);
 
     Student delete(int id);
 }
