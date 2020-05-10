@@ -89,13 +89,13 @@ public class StudentRepo implements ExRepo {
     public boolean update(Student student) {
 
         try {
-            PreparedStatement statement = conn.prepareStatement("UPDATE students SET fornavn = ?, efternvn = ?,dato =?, cpr =? WHERE student_id =?");
+            System.out.println(student.getFornavn());
+            PreparedStatement statement = conn.prepareStatement("UPDATE students SET fornavn = ?, efternavn = ?, cpr =? WHERE student_id =?");
 
             statement.setString(1, student.getFornavn());
             statement.setString(2, student.getEfternavn());
-            statement.setString(3, student.getDato());
-            statement.setInt(4, student.getCpr());
-            statement.setInt(5, student.getId());
+            statement.setInt(3, student.getCpr());
+            statement.setInt(4, student.getId());
 
             statement.executeUpdate();
         }
