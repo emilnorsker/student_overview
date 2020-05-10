@@ -1,6 +1,6 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<div th:fragment="updateModal(name1, name2,dato,cpr)">
+<div th:fragment="updateModal(name1, name2,dato,cpr,id)">
     <button type="button" data-toggle="modal" th:attr="data-target='#update' + ${id}">
         Update
     </button>
@@ -23,17 +23,19 @@
 
                         <form action="/update" method="post">
                             <div class="form-group">
-                                <input type="text" name="fornavn" class="form-control" th:placeholder="${name1}" >
+                                <input type="text" name="fornavn" class="form-control" th:value="${name1}" th:placeholder="${name1}" >
                             </div>
                             <div class="form-group">
-                                <input type="text" name="efternavn" class="form-control" th:placeholder="${name2}" >
+                                <input type="text" name="efternavn" class="form-control" th:value="${name2}" th:placeholder="${name2}" >
                             </div>
                             <div class="form-group">
-                                <input type="text" name="dato" class="form-control" th:placeholder="${dato}" >
+                                <input type="text" name="dato" class="form-control" th:value="${dato}" th:placeholder="${dato}" >
                             </div>
                             <div class="form-group">
-                                <input type="number" name="cpr" class="form-control" th:placeholder="${cpr}" >
+                                <input type="text" name="cpr" class="form-control" th:value="${cpr}" th:placeholder="${cpr}" >
                             </div>
+                                <input type="hidden" name="id" th:value="${id}">
+                            <div th:text = "${id}"></div>
 
 
                 <div class="modal-footer">
