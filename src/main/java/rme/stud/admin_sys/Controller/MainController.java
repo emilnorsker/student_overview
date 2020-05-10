@@ -51,7 +51,7 @@ public class MainController {
     }
 
     @PostMapping("/update")
-    public String Update(@ModelAttribute Student student) throws SQLException {
+    public String update(@ModelAttribute Student student) throws SQLException {
         studentRepo.update(student);
         return "redirect:/students";
     }
