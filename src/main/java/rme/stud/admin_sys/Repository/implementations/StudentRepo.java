@@ -19,12 +19,6 @@ public class StudentRepo implements ExRepo {
             this.conn = DatabaseConnectionManager.getDatabaseConnection();
         }catch(ClassNotFoundException | SQLException e){System.out.println(e);}
     }
-
-
-
-
-
-
     @Override
     public Student create(Student student) {
         Student studentToCreate = new Student();
@@ -47,14 +41,6 @@ public class StudentRepo implements ExRepo {
         }
         return studentToCreate;
     }
-
-
-
-
-
-
-
-
 
     @Override
     public Student read(int id) {
@@ -101,15 +87,34 @@ public class StudentRepo implements ExRepo {
 
     @Override
     public boolean update(Student student) {
+
+        try {
+            PreparedStatement statement = conn.prepareStatement("UPDATE students SET fornavn = ?, efternvn = ?,dato =?, cpr =? WHERE student_id =?");
+
+            statement.setString(1, student.getFornavn());
+            statement.setString(2, student.getEfternavn());
+            statement.setString(3, student.getDato());
+            statement.setInt(4, student.getCpr());
+            statement.setInt(5, student.getId());
+
+            statement.executeUpdate();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         return false;
-
-
     }
 
     @Override
     public Student delete(int id) {
-        Student studentToDelete = new Student();
-        studentToDelete.getId();
-        return studentToDelete;
+        try {
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM student WHERE id=?");
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return new Student();
     }
 }
