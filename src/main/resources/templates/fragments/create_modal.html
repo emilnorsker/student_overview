@@ -18,7 +18,7 @@
 
                     <h1>Create new item</h1>
 
-                    <form action="/create" method="post">
+                    <form id="create" action="/create" method="post">
                         <div class="form-group">
                             <input type="text" name="fornavn" class="form-control" placeholder="Please enter a First Name">
                         </div>
@@ -36,9 +36,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Create Item</button>
+                <button type="submit" class="btn btn-primary" form="create">Create Item</button>
             </div>
-            </form>
         </div>
     </div>
 </div>

@@ -35,7 +35,7 @@ public class MainController {
     @GetMapping("/create")
     public String showCreatePage(){
 
-        return "create";
+        return "redirect:/students";
     }
 
     @PostMapping("/create")

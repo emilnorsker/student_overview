@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <div th:fragment="updateModal(id,name1, name2, cpr)">
-    <button type="button" data-toggle="modal" th:attr="data-target='#update' + ${id}">
+    <button type="button" class="btn btn-primary" data-toggle="modal" th:attr="data-target='#update' + ${id}">
         Update
     </button>
 
@@ -38,7 +38,6 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Create Item</button>
                 </div>
-                </form>
             </div>
         </div>
     </div>
