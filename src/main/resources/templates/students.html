@@ -80,9 +80,9 @@
                 </div>
 
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
-                    <p th:each="student :${students}">
-                    <a style="color: black;" th:href="@{'/update/' + ${student.id}}">Update</a>
-                    </p>
+                    <div th:each="student :${students}">
+                    <div th:include="fragments/update_modal :: updateModal(${student.fornavn}, ${student.efternavn}, ${student.cpr})"></div>
+                    </div>
                 </div>
             </div>
         </div>
