@@ -13,6 +13,19 @@
 </head>
 <body>
 
+
+<script type="text/javascript">
+    <!--
+    function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        if(e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+    //-->
+</script>
+
 <div class="container">
 
     <div th:replace="fragments/Menu">
@@ -36,6 +49,9 @@
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
                     <h7>Date</h7>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
+                    <h7>Show/Hide CPR</h7>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-black">
                     <h7>CPR</h7>
@@ -69,7 +85,12 @@
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
                     <p th:each="student :${students}">
-                        <span id = "CPR" style="color: black" th:text="${student.cpr}"/>
+                        <a href="#" onclick=toggle_visibility('foo')>Show/Hide CPR</a>
+                    </p>
+                </div>
+                <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
+                    <p th:each="student :${students}">
+                        <span id = "foo" th:text="${student.cpr}"/>
                     </p>
                 </div>
                 <div class="col-sm col-sm p-3 mb-2 bg-light text-white">
